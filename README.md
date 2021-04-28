@@ -51,7 +51,7 @@ Payload
 ```curl
 GET /users?email={email}
 ```
-Result
+Response
 ```json
 {
   "name": "John Doe",
@@ -160,7 +160,7 @@ PUT /carts
 Payload
 ```json
 {
-  "id": "xlccpbla3e3zdogcjhzf"
+  "id": "xlccpbla3e3zdogcjhzf",
   "items": [
    {
      "name": "Margherita",
@@ -220,4 +220,28 @@ Response
     }
   ]
 }
+```
+
+### ORDERS
+Users can create orders. 
+Requires `token` to be passed in `header`
+
+**Create new order**
+```curl
+POST /orders
+```
+Payload
+```json
+{
+	"cartId": "xlccpbla3e3zdogcjhzf",
+  "cardName": "JOHN DOE",
+  "cardNumber": "4242424242424242",
+  "cardExpirationMonth": "12",
+  "cardExpirationYear": "2022",
+  "cardCvc": "567"
+}
+```
+Response
+```json
+{}
 ```
