@@ -19,6 +19,7 @@ API domain `http://localhost:3000`
 
 ### USERS
 
+Create new user
 ```curl
 POST /users
 ```
@@ -36,6 +37,7 @@ Result
 {}
 ```
 
+Update user
 ```curl
 PUT /users
 ```
@@ -52,10 +54,9 @@ Result
 ```
 {}
 ```
-
+Get user
 ```curl
 GET /users?email=john@gmail.com
-```
 ```
 Result
 ```json
@@ -65,7 +66,7 @@ Result
   "address": "Av. Street, 34"
 }
 ```
-
+Delete user
 ```curl
 DELETE /users?email=john@gmail.com
 ```
