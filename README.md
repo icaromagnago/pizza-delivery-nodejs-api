@@ -1,5 +1,7 @@
 # Pirple Node.js Master class - Homework Assignment #2 - Pizza Delivery API
 
+[https://github.com/icaromagnago/pizza-delivery-nodejs-api](https://github.com/icaromagnago/pizza-delivery-nodejs-api)
+
 ## Requirements
 
 1. Create, update and delete users.
@@ -233,7 +235,7 @@ POST /orders
 Payload
 ```json
 {
-	"cartId": "xlccpbla3e3zdogcjhzf",
+  "cartId": "xlccpbla3e3zdogcjhzf",
   "cardName": "JOHN DOE",
   "cardNumber": "4242424242424242",
   "cardExpirationMonth": "12",
