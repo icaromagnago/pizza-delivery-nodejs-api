@@ -26,15 +26,11 @@ POST /users
 Payload
 ```json
 {
-	"name": "John Doe",
-	"email": "john@gmail.com",
-	"password": "123456",
-	"address": "Av. Street, 34"
+  "name": "John Doe",
+  "email": "john@gmail.com",
+  "password": "123456",
+  "address": "Av. Street, 34"
 }
-```
-Result
-```
-{}
 ```
 
 **Update user**
@@ -44,19 +40,16 @@ PUT /users
 Payload
 ```json
 {
-	"name": "John Doe",
-	"email": "john@gmail.com",
-	"password": "123456",
-	"address": "Av. Street, 34"
+  "name": "John Doe",
+  "email": "john@gmail.com",
+  "password": "123456",
+  "address": "Av. Street, 34"
 }
 ```
-Result
-```
-{}
-```
+
 **Get user**
 ```curl
-GET /users?email=john@gmail.com
+GET /users?email={email}
 ```
 Result
 ```json
@@ -68,6 +61,163 @@ Result
 ```
 **Delete user**
 ```curl
-DELETE /users?email=john@gmail.com
+DELETE /users?email={email}
 ```
 
+### TOKENS
+
+**Create new token**
+```curl
+POST /tokens
+```
+Payload
+```json
+{
+  "email": "john@gmail.com",
+  "password": "123456"
+}
+```
+
+**Delete token**
+```curl
+POST /tokens?id={id}
+```
+
+### MENU ITEMS
+Retrieves all menu items.
+Requires `token` to be passed in `header`
+```curl
+POST /items?email={email}
+```
+Response
+```json
+[
+  {
+    "name": "Margherita",
+    "price": "38"
+  },
+  {
+    "name": "Pepperoni",
+    "price": "39"
+  },
+  {
+    "name": "BBQ Chicken",
+    "price": "39"
+  }
+]
+```
+
+### CARTS
+A user can add items to a cart.
+Requires `token` to be passed in `header`
+
+**Create new cart**
+```curl
+POST /carts
+```
+Payload
+```json
+{
+  "items": [
+   {
+     "name": "Margherita",
+     "price": 38,
+     "quantity": 1
+   },
+   {
+     "name": "Pepperoni",
+     "price": 39,
+     "quantity": 1
+   }
+ ]
+}
+```
+Response
+```json
+{
+  "id": "xlccpbla3e3zdogcjhzf",
+  "total": 77,
+  "email": "john@gmail.com",
+  "items": [
+    {
+      "name": "Margherita",
+      "price": 38,
+      "quantity": 1
+    },
+    {
+      "name": "Pepperoni",
+      "price": 39,
+      "quantity": 1
+    }
+  ]
+}
+```
+
+**Update cart**
+```curl
+PUT /carts
+```
+Payload
+```json
+{
+  "id": "xlccpbla3e3zdogcjhzf"
+  "items": [
+   {
+     "name": "Margherita",
+     "price": 38,
+     "quantity": 2
+   },
+   {
+     "name": "Pepperoni",
+     "price": 39,
+     "quantity": 2
+   }
+ ]
+}
+```
+Response
+```json
+{
+  "id": "xlccpbla3e3zdogcjhzf",
+  "total": 154,
+  "email": "mane@gmail.com",
+  "items": [
+    {
+      "name": "Margherita",
+      "price": 38,
+      "quantity": 2
+    },
+    {
+      "name": "Pepperoni",
+      "price": 39,
+      "quantity": 2
+    }
+  ]
+}
+```
+
+**Get cart**
+```curl
+GET /carts?id={id}
+```
+
+Response
+```json
+{
+  "id": "xlccpbla3e3zdogcjhzf",
+  "total": 154,
+  "email": "mane@gmail.com",
+  "items": [
+    {
+      "name": "Margherita",
+      "price": 38,
+      "quantity": 2
+    },
+    {
+      "name": "Pepperoni",
+      "price": 39,
+      "quantity": 2
+    }
+  ]
+}
+```
